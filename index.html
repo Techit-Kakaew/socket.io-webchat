@@ -128,9 +128,6 @@
                             socket.emit('send message', $message.val());
                             $message.val('');
                         }
-                        else {
-                            /*Do not anything*/
-                        }
                     }
                 });
 
@@ -167,10 +164,6 @@
                         $currentInput = $message.focus();
                         socket.emit('new user', $username.val());
                     }
-                    else {
-                        /*Do not anything*/
-                    }
-
                 });
 
                 // add username to list
