@@ -86,7 +86,7 @@
             </div>
         </div>
         <div id="messageArea" class="row" style="margin-top: 30px;">
-            <div class="col-md-4 border">
+            <div class="col-md-4">
                 <div class="well text-center">
                     <h1>
                         <i class="fas fa-users"></i>
@@ -142,40 +142,21 @@
 
                 $messageBtn.click((e) => {
                     e.preventDefault();
+                    $currentInput = $message.focus();
                     if ($message.val()) {
                         socket.emit('send message', $message.val());
                         $message.val('');
-                        $currentInput = $message.focus();
                     }
                 });
 
                 socket.on('new message', (data) => {
-                    $chat.append('<li class="h3"><span class="text-primary"><b>' + data.users + '</b>: </span><span>' + data.msg + '</span></li>');
+                    $chat.append('<li class="h3 text-monospace"><span class="text-primary"><b>' + data.users + '</b>: </span><span>' + data.msg + '</span></li>');
                     $chat[0].scrollTop = $chat[0].scrollHeight;
                 });
-
-                /*$userForm.submit((e) => {
-                    e.preventDefault();
-                    //console.log("test");
-                    socket.emit('new user', $username.val(), (data) => {
-                        data = $username.val();
-                        if (data) {
-                            $userFormArea.hide(1000);
-                            $messageArea.fadeIn(2000);
-                            $currentInput = $message.focus();
-                        }
-                        else {
-                            setTimeout(() => {
-                                location.reload();
-                            }, 1);
-                        }
-                    });
-                });*/
 
                 // sign in
                 $userForm.submit((e) => {
                     e.preventDefault();
-                    //console.log("test");
                     if ($username.val()) {
                         $userFormArea.hide(1000);
                         $messageArea.fadeIn(2000);
@@ -188,7 +169,7 @@
                 socket.on('get users', (data) => {
                     var html = '';
                     for (i = 0; i < data.length; i++) {
-                        html += '<li class="h4 list-group-item"><b>' + data[i] + '</b></li>';
+                        html += '<li class="h4 text-monospace list-group-item"><b>' + data[i] + '</b></li>';
                     }
                     $users.html(html);
                 });
