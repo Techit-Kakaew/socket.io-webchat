@@ -38,7 +38,7 @@
             left: 0;
             position: absolute;
             right: 0;
-            width: 50%;
+            width: 100%;
         }
 
         .chat {
@@ -85,14 +85,18 @@
                 <div class="chatArea">
                     <ul class="chat" id="chat">
                         <form id="messageForm">
-                            <div class="input-group txtArea mb-1">
-                                <textarea class="form-control" rows="1" id="message"
-                                    placeholder="Type a Message"></textarea>
-                                <div class="input-group-append">
-                                    <button type="button" class="btn btn-outline-primary" id="messageBtn"><i
-                                            class="far fa-paper-plane" style="height: 20px;"></i></button>
-                                </div>
-                            </div>
+                            <table class="table txtArea mb-1">
+                                <tr>
+                                    <th><textarea class="form-control" rows="1" id="message"
+                                            placeholder="Type a Message"></textarea></th>
+                                    <th>
+                                        <div class="input-group-append">
+                                            <button type="button" class="btn btn-outline-primary" id="messageBtn"><i
+                                                    class="far fa-paper-plane" style="height: 20px"></i></button>
+                                        </div>
+                                    </th>
+                                </tr>
+                            </table>
                         </form>
                     </ul>
                 </div>
